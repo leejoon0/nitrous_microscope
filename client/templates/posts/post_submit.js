@@ -11,10 +11,10 @@ Template.postSubmit.events({
     //Router.go('postPage', post);
     Meteor.call('postInsert', post, function(error, result){
       if(error)
-        return alert(error.reason);
+        return throwError(error.reason);
       
       if (result.postExists)
-        alert('This link has already been posted');
+        throwError('This link has already been posted');
       
       Router.go('postPage', {_id: result._id});
     });
