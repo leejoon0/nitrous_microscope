@@ -7,6 +7,10 @@ Template.postSubmit.events({
       title: $(e.target).find('[name=title]').val()
     };
     
+    var errors = validatePost(post);
+    if (errors.title || errors.url)
+      return Session.set('postSubmitErrors', errors);
+    
     //post._id = Posts.insert(post);
     //Router.go('postPage', post);
     Meteor.call('postInsert', post, function(error, result){
@@ -18,5 +22,18 @@ Template.postSubmit.events({
       
       Router.go('postPage', {_id: result._id});
     });
+  }
+});
+
+Template.postSubmit.created = function(){
+  Session.set('postSubmitErrors',{});
+}
+
+Template.postSubmit.helpers({
+  errorMessage: function(field) {
+    return Session.get('postSubmitErrors')[field];
+  },
+  errorClass: function (field) {
+    return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
   }
 });
