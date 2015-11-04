@@ -1,4 +1,4 @@
-if (Posts.find().count() === 0) {
+/*if (Posts.find().count() === 0) {
   Posts.insert({
     title: 'Introducing Telescope',
     url: 'http://sachagreif.com/introducing-telescope/'
@@ -13,4 +13,4 @@ if (Posts.find().count() === 0) {
     title: 'The Meteor Book',
     url: 'http://themeteorbook.com'
   });
-}
+}*/
