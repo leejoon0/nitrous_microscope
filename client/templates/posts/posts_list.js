@@ -12,9 +12,9 @@
     url: 'http://themeteorbook.com'
   }
 ];*/
-Template.postsList.helpers({
+/*Template.postsList.helpers({
   //posts: postsData
   posts: function() {
     return Posts.find({}, {sort: {submitted: -1}});
   }
-});
+});*/
